@@ -20,9 +20,10 @@ import sqlite3
 from pathlib import Path
 
 # ─── Configuration ────────────────────────────────────────────────────────────
-
-DATASET_DIR = Path(r"e:\dodge ai\sap-order-to-cash-dataset\sap-o2c-data")
-DB_PATH = Path(r"e:\dodge ai\backend\o2c.db")
+# Define paths relative to this script so it works on Render or any other machine
+BASE_DIR = Path(__file__).parent
+DATA_DIR = BASE_DIR / "data" / "sap-order-to-cash-dataset" / "sap-o2c-data"
+DB_PATH = BASE_DIR / "o2c.db"
 
 # ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -80,8 +81,8 @@ def normalize_value(value):
 
 def ingest():
     """Main entry point: read dataset, create tables, insert rows."""
-    if not DATASET_DIR.exists():
-        print(f"ERROR: Dataset directory not found: {DATASET_DIR}")
+    if not DATA_DIR.exists():
+        print(f"ERROR: Dataset directory not found: {DATA_DIR}")
         return
 
     # Ensure output directory exists
@@ -92,7 +93,7 @@ def ingest():
     cursor.execute("PRAGMA journal_mode=WAL;")
     cursor.execute("PRAGMA synchronous=NORMAL;")
 
-    subdirs = sorted([d for d in DATASET_DIR.iterdir() if d.is_dir()])
+    subdirs = sorted([d for d in DATA_DIR.iterdir() if d.is_dir()])
 
     summary = []
 

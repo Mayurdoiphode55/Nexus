@@ -104,7 +104,7 @@ pip install -r requirements.txt
 python ingest.py
 
 # Run the backend server
-uvicorn main:app --reload --port 8000
+
 ```
 *The backend will be live at http://127.0.0.1:8000. You can visit `/docs` for the interactive Swagger API.*
 
