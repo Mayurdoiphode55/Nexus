@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/api',
+  // Use the deployed Render URL if provided, otherwise fallback to local /api proxy
+  baseURL: import.meta.env.VITE_API_URL || '/api',
   timeout: 30000,
 });
 
