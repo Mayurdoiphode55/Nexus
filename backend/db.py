@@ -9,9 +9,8 @@ Provides:
 
 import sqlite3
 from pathlib import Path
-
-DB_PATH = Path(r"e:\dodge ai\backend\o2c.db")
-
+BASE_DIR = Path(__file__).parent
+DB_PATH = BASE_DIR / "o2c.db"
 
 def get_connection() -> sqlite3.Connection:
     """Return a connection to the O2C database."""
