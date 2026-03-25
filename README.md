@@ -95,7 +95,7 @@ GROQ_API_KEY=gsk_your_api_key_here
 Navigate to the backend, install Python dependencies, ingest the SQLite database, and start the FastAPI server:
 
 ```bash
-cd backend
+cd src/backend
 
 # Install dependencies
 pip install -r requirements.txt
@@ -113,7 +113,7 @@ python ingest.py
 In a new terminal wrapper, navigate to the frontend directory:
 
 ```bash
-cd frontend
+cd src/frontend
 
 # Install Node modules
 npm install
